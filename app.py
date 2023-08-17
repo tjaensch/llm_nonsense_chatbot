@@ -14,7 +14,7 @@ tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint,
                                                     device_map='auto',
                                                     torch_dtype=torch.float32)
-### LangChain plumbing code
+# LangChain plumbing code
 llm = HuggingFacePipeline.from_model_id(model_id=checkpoint,
                                         task = 'text2text-generation',
                                         model_kwargs={"temperature":0.7,"min_length":30, "max_length":350, "repetition_penalty": 5.0})
