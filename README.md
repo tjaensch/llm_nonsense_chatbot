@@ -1,4 +1,4 @@
-# Live link to Nonsense ChatBot
+# Live link to LLM Nonsense ChatBot
 [https://llm-nonsense-chatbot.streamlit.app/](https://llm-nonsense-chatbot.streamlit.app/)
 
 # What is this?
