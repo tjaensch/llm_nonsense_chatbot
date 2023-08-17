@@ -3,8 +3,8 @@ huggingface_hub
 langchain
 mkl
 mkl-include
-streamlit==1.24.0
-torch==1.11.0
-torchvision==0.12.0
-torchaudio==0.11.0
+streamlit
+torch
+torchvision
+torchaudio
 transformers
