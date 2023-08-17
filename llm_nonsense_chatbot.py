@@ -3,25 +3,31 @@ from time import  sleep
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from langchain.llms import HuggingFacePipeline
+from langchain import PromptTemplate, LLMChain
 
 # Avatar emojis
 av_us = "🐵" 
 av_ass = '🚽'
 
-# Model initialization
-checkpoint = "./model/"
-tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint,
-                                                    device_map='auto',
-                                                    torch_dtype=torch.float32)
-# LangChain plumbing code
-llm = HuggingFacePipeline.from_model_id(model_id=checkpoint,
-                                        task = 'text2text-generation',
-                                        model_kwargs={"temperature":0.7,"min_length":30, "max_length":350, "repetition_penalty": 5.0})
-from langchain import PromptTemplate, LLMChain
+@st.cache_resource
+def get_llm():
+    # Model initialization
+    checkpoint = "./model/"
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+    base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint,
+                                                        device_map='auto',
+                                                        torch_dtype=torch.float32)
+    # LangChain plumbing code
+    llm = HuggingFacePipeline.from_model_id(model_id=checkpoint,
+                                            task = 'text2text-generation',
+                                            model_kwargs={"temperature":0.7,"min_length":30, "max_length":350, "repetition_penalty": 5.0})
+    
+    return llm
+    
+
 template = """{text}"""
 prompt = PromptTemplate(template=template, input_variables=["text"])
-chat = LLMChain(prompt=prompt, llm=llm)
+chat = LLMChain(prompt=prompt, llm=get_llm())
 
 
 st.title("LLM Nonsense ChatBot 🤡")
