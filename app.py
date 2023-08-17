@@ -1,21 +1,20 @@
 import streamlit as st
 from time import  sleep
-#### IMPORTS FOR AI PIPELINES ###############
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from langchain.llms import HuggingFacePipeline
 
-#AVATARS
+# Avatar emojis
 av_us = "🐵" 
 av_ass = '🚽'
 
-### INITIALIZING LAMINI MODEL
+# Model initialization
 checkpoint = "./model/"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint,
                                                     device_map='auto',
                                                     torch_dtype=torch.float32)
-### INITIALIZING PIPELINE CHAIN WITH LANGCHAIN
+### LangChain plumbing code
 llm = HuggingFacePipeline.from_model_id(model_id=checkpoint,
                                         task = 'text2text-generation',
                                         model_kwargs={"temperature":0.7,"min_length":30, "max_length":350, "repetition_penalty": 5.0})
@@ -27,8 +26,6 @@ chat = LLMChain(prompt=prompt, llm=llm)
 
 st.title("LLM Nonsense ChatBot 🤡")
 st.subheader("Ask me anything and I'll produce some utter garbage answer in mostly perfect English")
-
-repo="MBZUAI/LaMini-Flan-T5-248M"
 
 # Show sidebar with model selection
 st.sidebar.title("What is this?")
