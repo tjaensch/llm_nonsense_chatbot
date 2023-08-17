@@ -10,3 +10,5 @@ The model code is hosted entirely on Streamlit Community Cloud without making an
 
 # Why is it useless?
 The model is very small (~300MB) to be able to run on Streamlit Community Cloud, but the results cannot be compared to large LLMs like ChatGPT4 (hundreds of GBs of data), etc. It also serves as an example that whatever LLM you're using, never blindly trust the output.
+
+![Screenshot](screenshot.PNG "LLM Nonsense ChatBot")
