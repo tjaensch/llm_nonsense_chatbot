@@ -25,7 +25,7 @@ prompt = PromptTemplate(template=template, input_variables=["text"])
 chat = LLMChain(prompt=prompt, llm=llm)
 
 
-st.title("Nonsense ChatBot 🤡")
+st.title("LLM Nonsense ChatBot 🤡")
 st.subheader("Ask me anything and I'll produce some utter garbage answer in mostly perfect English")
 
 repo="MBZUAI/LaMini-Flan-T5-248M"
