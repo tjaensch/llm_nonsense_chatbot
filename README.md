@@ -1,5 +1,5 @@
-# Live link to LLM Nonsense ChatBot
-[https://llm-nonsense-chatbot.streamlit.app/](https://llm-nonsense-chatbot.streamlit.app/)
+# Deprecated
+Doesn't work anymore because GitHub Large File Storage has been disabled
 
 # What is this?
 
